@@ -1,0 +1,8 @@
+https://www.google.com/s2/favicons?domain=github.com
+to get favicon
+import ogs from 'open-graph-scraper';
+
+const options = { url: 'https://github.com' };
+const { error, result } = await ogs(options);
+
+console.log(result);
