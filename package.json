@@ -15,7 +15,7 @@
     "fs": "^0.0.1-security",
     "mongoose": "^8.24.2",
     "multer": "^2.0.1",
-    "next": "15.3.5",
+    "next": "^16.2.12",
     "next-auth": "^4.24.11",
     "open-graph-scraper": "^6.10.0",
     "path": "^0.12.7",
