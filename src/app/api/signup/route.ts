@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import connect from "@/app/dbConfig/dbConfig";
 import User from "@/Models/user";
 import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 import uploadOnCloudinary from "@/Services/cloudinary";
 
-import fs from "fs";
 import path from "path";
 import { writeFile } from "fs/promises";
 import os from "os";

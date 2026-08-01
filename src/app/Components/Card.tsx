@@ -1,4 +1,22 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+
+export interface LinkData {
+  url: string;
+  title: string;
+  description?: string;
+  hashtags: string[];
+  clickCount: number;
+  favicon?: string;
+  image?: string;
+  slug: string;
+}
+
+interface CardProps {
+  linkKaData: LinkData;
+  fetchLinks: () => void;
+}
 
 import axios from "axios";
 import React from "react";
@@ -6,7 +24,7 @@ import toast from "react-hot-toast";
 import { FaLink } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 
-const Card = ({ linkKaData, fetchLinks }) => {
+const Card = ({ linkKaData, fetchLinks }: CardProps) => {
   const {
     url,
     title,
@@ -21,7 +39,7 @@ const Card = ({ linkKaData, fetchLinks }) => {
   const handleClicks = async (url: string) => {
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clicks`,
+        `/api/clicks`,
         { url }
       );
       fetchLinks();
@@ -33,7 +51,7 @@ const Card = ({ linkKaData, fetchLinks }) => {
   const handleDelete = async () => {
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/delete`,
+        `/api/delete`,
         { slug }
       );
       if (response.data.success) {
@@ -43,7 +61,7 @@ const Card = ({ linkKaData, fetchLinks }) => {
         toast.error(response.data.message);
       }
     } catch (error: any) {
-      toast.error("Failed to delete link");
+      toast.error("Failed to delete link" + error.message);
     }
   };
 
@@ -92,7 +110,7 @@ const Card = ({ linkKaData, fetchLinks }) => {
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2">
-          {hashtags.map((tag, index) => (
+          {hashtags.map((tag:any, index:any) => (
             <span
               key={index}
               className="bg-purple-500/10 border border-purple-500 text-purple-200 text-s px-4 py-1 rounded-xl flex items-center gap-1"

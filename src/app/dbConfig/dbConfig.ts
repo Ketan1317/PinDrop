@@ -25,15 +25,15 @@ export default async function connect() {
 
     connection.on("connected", () => {
       isConnected = true;
-      console.log("✅ MongoDB connected successfully");
+      console.log("MongoDB connected successfully");
     });
 
-    connection.on("error", (err) => {
-      console.error("❌ MongoDB connection error:", err);
+    connection.on("error", (err:unknown) => {
+      console.error("MongoDB connection error:", err);
       process.exit(1);
     });
   } catch (error) {
-    console.error("❌ Connection failed:", error);
+    console.error("Connection failed:", error);
     process.exit(1);
   }
 }

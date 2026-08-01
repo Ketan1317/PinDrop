@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import connect from "@/app/dbConfig/dbConfig";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";

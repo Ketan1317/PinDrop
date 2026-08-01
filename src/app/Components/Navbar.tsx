@@ -32,16 +32,8 @@ const Navbar = () => {
       >
         Profile
         </Link>
-      <Link
-        href={"/settings"}
-        className={`text-lg md:text-xl transition duration-200 hover:underline underline-offset-4 hover:scale-105 font-semibold ${
-          pathname === "/settings" ? "text-cyan-400" : "text-white/90"
-        }`}
-      >
-        Settings
-        </Link>
 
-        <button onClick={signOut} className="bg-red-600 hover:bg-red-700 transition duration-200 px-5 py-2 md:px-6 md:py-2.5 rounded-xl text-sm md:text-md font-bold shadow-md hover:scale-105">
+        <button onClick={() => signOut()} className="bg-red-600 hover:bg-red-700 transition duration-200 px-5 py-2 md:px-6 md:py-2.5 rounded-xl text-sm md:text-md font-bold shadow-md hover:scale-105">
           Logout
         </button>
       </div>

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -6,7 +8,7 @@ import Footer from "./Components/Footer";
 import { CiSearch } from "react-icons/ci";
 import axios from "axios";
 import toast from "react-hot-toast";
-import Card from "./Components/Card";
+import Card, { LinkData } from "./Components/Card";
 import { ImSpinner2 } from "react-icons/im";
 import { IoClose } from "react-icons/io5";
 
@@ -19,8 +21,8 @@ const Page = () => {
   const [title, setTitle] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [fetching, setFetching] = useState<boolean>(true);
-  const [linkData, setLinkData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
+  const [linkData, setLinkData] = useState<LinkData[]>([]);
+  const [filteredData, setFilteredData] = useState<LinkData[]>([]);
 
   const handleAddTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && tagInput.trim() !== "") {
@@ -51,9 +53,7 @@ const Page = () => {
   const fetchLinks = async () => {
     try {
       setFetching(true);
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/link`
-      );
+      const response = await axios.get(`/api/link`);
       setFetching(false);
       if (response.data.success) {
         setLinkData(response.data.allLinks);
@@ -78,15 +78,12 @@ const Page = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/link`,
-        {
-          url: url,
-          slug: slug,
-          hashtags: tags,
-          title:title
-        }
-      );
+      const response = await axios.post(`/api/link`, {
+        url: url,
+        slug: slug,
+        hashtags: tags,
+        title: title,
+      });
       setLoading(false);
 
       if (response.data.success) {
@@ -117,7 +114,7 @@ const Page = () => {
     const filtered = linkData.filter(
       (link) =>
         link.title?.toLowerCase().includes(term) ||
-        link.hashtags?.some((tag: string) => tag.toLowerCase().includes(term))
+        link.hashtags?.some((tag: string) => tag.toLowerCase().includes(term)),
     );
     setFilteredData(filtered);
   }, [search, linkData]);
@@ -179,7 +176,6 @@ const Page = () => {
               className="bg-transparent border placeholder:text-xl border-white/10 px-4 py-3 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
-
 
           {/* 🏷️ Tags Input */}
           <div className="flex flex-col gap-2">

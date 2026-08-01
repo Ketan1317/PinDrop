@@ -46,12 +46,44 @@ export default function Page() {
   }, [session, status]);
 
   if (status === "loading") {
-    return (
-      <p className="text-white text-5xl text-center animate-pulse mt-20">
-        Loading session...
-      </p>
-    );
-  }
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-[#030712]">
+      <div className="flex flex-col items-center gap-6">
+        {/* Spinner */}
+        <div className="relative">
+          <div className="w-20 h-20 rounded-full border-4 border-white/10"></div>
+          <div className="absolute inset-0 w-20 h-20 rounded-full border-4 border-transparent border-t-cyan-400 border-r-purple-500 animate-spin"></div>
+        </div>
+
+        {/* Brand */}
+        <h1 className="text-5xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+          PinDrop
+        </h1>
+
+        {/* Loading Text */}
+        <p className="text-gray-400 text-lg animate-pulse tracking-wide">
+          Preparing your workspace...
+        </p>
+
+        {/* Progress Bar */}
+        <div className="w-72 h-2 bg-white/10 rounded-full overflow-hidden">
+          <div className="h-full w-1/2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 animate-[loading_1.5s_ease-in-out_infinite]"></div>
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes loading {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(250%);
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
 
   return (
     <div className="min-h-screen flex items-center justify-center gap-40 px-6 text-white">

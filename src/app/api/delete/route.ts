@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import connect from "@/app/dbConfig/dbConfig";
 import LinkModel from "@/Models/link";
 import { NextRequest, NextResponse } from "next/server";

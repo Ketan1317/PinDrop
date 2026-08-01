@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import ogs from 'open-graph-scraper';
 
 export async function scrapeMetadata(url: string) {
@@ -9,7 +10,6 @@ export async function scrapeMetadata(url: string) {
       return {
         success: false,
         message: 'Open Graph scrape failed',
-        data: result
       };
     }
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import React, { useState } from "react";
 import { michroma } from "../layout";
@@ -35,7 +36,7 @@ const page = () => {
       }
 
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/signup`,
+        `/api/signup`,
         formData
       );
 

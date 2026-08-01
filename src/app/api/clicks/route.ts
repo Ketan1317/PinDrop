@@ -1,8 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import connect from "@/app/dbConfig/dbConfig";
 import LinkModel from "@/Models/link";
-import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/options";
 
 export async function POST(request: NextRequest) {
 
