@@ -15,9 +15,9 @@ export default async function connect() {
 
   try {
     console.log("🔄 Connecting to MongoDB...");
+    console.log(process.env.MONGO_DB_URL);
 
     await mongoose.connect(process.env.MONGO_DB_URL!, {
-      dbName: "PinDrop", 
       bufferCommands: false,
     });
 
