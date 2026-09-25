@@ -189,25 +189,4 @@ Link Cards
 - Dark/Light Themes
 - Dashboard Analytics
 
----
 
-## Contributing
-
-Contributions are welcome.
-
-Fork the repository and submit a Pull Request.
-
----
-
-## License
-
-MIT License
-
----
-
-## Author
-
-**Ketan Goyal**
-
-GitHub:
-https://github.com/Ketan1317
